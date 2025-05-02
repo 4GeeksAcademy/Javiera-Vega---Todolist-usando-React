@@ -39,51 +39,47 @@ const Home = () => {
 		setListTask(newListTask)
 	}
 
+	return (
+		<div className="container">
+			<div className="row justify-content-center">
+				<h1 className="title text-center">todos</h1>
+				<div className="col-6 border border-seconday bg-white box">
+					<form className="list-task"
+						onSubmit={(event) => event.preventDefault()}>
 
-return (
-	<div className="container">
-		<div className="row justify-content-center">
-			<h1 className="title text-center">todos</h1>
-			<div className="col-6 border border-seconday bg-white box">
-				<form className="list-task"
-					onSubmit={(event) => event.preventDefault()}>
-
-					<input
-						className="form-task col-12"
-						type="text"
-						placeholder="ingresa tu tarea aquí"
-						name="taskname"
-						onKeyDown={addTask}
-						onChange={handleChange}
-						value={task.taskname}
-					/>
-				</form>
-				<ul>
-					{
-						listtask.map((element, index) => {
-							return (
-								<li
-									className="added-tasks"
-									key={index}>{element.task}
-									<span>
-										<i className="click fa-solid fa-xmark"
-											onClick={() => deleteTask(index)}
-										></i>
-									</span>
-								</li>
-							)
-						})
-					}
-				</ul>
-				<p className="text-body text-muted">{`${listtask.length} item left`}
-				</p>
+						<input
+							className="form-task col-12"
+							type="text"
+							placeholder="ingresa tu tarea aquí"
+							name="taskname"
+							onKeyDown={addTask}
+							onChange={handleChange}
+							value={task.taskname}
+						/>
+					</form>
+					<ul>
+						{
+							listtask.map((element, index) => {
+								return (
+									<li
+										className="added-tasks"
+										key={index}>{element.task}
+										<span>
+											<i className="click fa-solid fa-xmark"
+												onClick={() => deleteTask(index)}
+											></i>
+										</span>
+									</li>
+								)
+							})
+						}
+					</ul>
+					<p className="text-body text-muted">{`${listtask.length} item left`}
+					</p>
+				</div>
 			</div>
-
 		</div>
-	</div>
-	
-
-)
-};
+	)
+}
 
 export default Home;
